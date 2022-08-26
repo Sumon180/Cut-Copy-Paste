@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cut Copy Paste</title>
+</head>
+<body>
+    
+    <input type="text" id="copyText" value="Please copy learn Sumon">
+    <button id="copybtn">Copy</button><br><br>
+
+    <input type="text" id="pasteText">
+    <button id="pastebtn">Paste</button><br><br>
+
+    <input type="text" id="cutText" value="Please cut me">
+    <button id="cutbtn">Cut</button>
+
+
+
+
+    <script>
+
+
+        let copyText = document.getElementById("copyText");
+        let copybtn = document.getElementById("copybtn");
+        copybtn.addEventListener("click",() => {
+            navigator.clipboard.writeText(copyText.value);
+            alert("Copy Successed");
+        })
+
+        let cutText = document.getElementById("cutText");
+        let cutbtn = document.getElementById("cutbtn");
+        cutbtn.addEventListener("click",() => {
+            navigator.clipboard.writeText(cutText.value);
+            cutText.value=""; 
+        })
+
+        let pasteText = document.getElementById("pasteText");
+        let pastebtn = document.getElementById("pastebtn");
+        pastebtn.addEventListener("click",() => {
+            pasteText.value="";
+            navigator.clipboard.readText()
+            .then((text) => {
+                pasteText.value=text;
+            })
+        })
+
+
+
+
+
+    </script>
+
+</body>
+</html>
